@@ -2,14 +2,21 @@ import React from 'react';
 import Post from './post/Post';
 import style from './MyPosts.module.css';
 
-const MyPosts = () => {
+const MyPosts = (props) => {
 
-  let posts = [
-    {id: '1', message: "Hi, how are you", likeCount: 12},
-    {id: '2', message: "It's, my first post", likeCount: 5}
-  ]
+  let postElement = props.profalePage.posts.map( (post) => <Post message={post.message} likeCount={post.likeCount}/> );
 
-  let postElement = posts.map( (post) => <Post message={post.message} likeCount={post.likeCount}/> );
+  let newPosrElement = React.createRef();
+
+  let addPost = () => {
+    let text = newPosrElement.current.value;
+    props.addPost();
+  }
+
+  let onPostChanche = () => {
+      let text = newPosrElement.current.value;
+      props.updateNewPostText(text);
+  }
 
   return (
       <div className={style.postsblock}>
@@ -17,10 +24,10 @@ const MyPosts = () => {
           <hr/>
           <div>
               <div>
-                  <textarea></textarea>
+                  <textarea onChange={onPostChanche} ref={newPosrElement} value={props.profalePage.newPostText}></textarea>
               </div>
               <div>
-                  <button>Add post</button>
+                  <button onClick={ addPost }>Add post</button>
               </div>
           </div>
           <div>

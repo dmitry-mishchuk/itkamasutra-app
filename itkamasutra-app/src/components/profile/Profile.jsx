@@ -4,13 +4,12 @@ import MyPosts from './myPosts/MyPosts'
 import style from './Profile.module.css';
 
 
-
-const Profile = () => {
+const Profile = (props) => {
   return (
     <div>
 
       <ProfileInfo/>
-      <MyPosts/>
+      <MyPosts profalePage={props.profalePage} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>
 
     </div>
   );
