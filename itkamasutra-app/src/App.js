@@ -1,28 +1,26 @@
 import React from 'react';
 import './App.css';
-import Header from './Header';
-import Technologies from './Technologies';
+import Header from './components/header/Header';
+import Navbar from './components/navbar/Navbar';
+import Profile from './components/profile/Profile';
+import Dialogs from './components/dialogs/Dialogs';
+import {BrowserRouter, Route} from 'react-router-dom';
 
 const App = () => {
   return (
-    <div className='appWraper'>
-      <header>
-        <img src="https://www.pinclipart.com/picdir/middle/387-3873569_catalyst-react-js-logo-svg-clipart.png"/>
-      </header>
+    <BrowserRouter>
+        <div className='appWraper'>
 
-      <nav>
-        Profile
-        News
-        music
-      </nav>
+            <Header/>
+            <Navbar/>
+            <div className='appContent'>
+              <Route path="/profile" component={Profile}/>
+              <Route path="/dialogs" component={Dialogs}/>
+            </div>
 
-      <div>
-        MainContent
-      </div>
+        </div>
 
-      <Header/>
-      <Technologies/>
-    </div>
+    </BrowserRouter>
   );
 }
 
