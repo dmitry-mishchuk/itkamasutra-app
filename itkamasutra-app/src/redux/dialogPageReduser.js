@@ -24,16 +24,17 @@ let initialState = {
 const dialogPageReduser = (state = initialState, action) => {
 
   if (action.type === ADD_MESSAGE) {
-    let newMessage = {
-      id:7,
-      message: state.newMessageText
-    };
-    state.messages.push(newMessage);
-    state.newMessageText = "";
+    return {
+      ...state,
+      messages: [...state.messages, { id:7, message: state.newMessageText }],
+      newMessageText: ''};
   } else if (action.type === UPDATE_MESSAGE) {
-    state.newMessageText = action.message;
+    return {
+      ...state,
+      newMessageText: action.message};
   }
   return state;
+
 }
 
 export let addMessageAction = () => ({ type: ADD_MESSAGE });

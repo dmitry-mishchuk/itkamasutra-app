@@ -2,7 +2,6 @@ import React from 'react';
 import Message from './message/Message';
 import DialogItem from './dialogItem/DialogItem';
 import style from './Dialogs.module.css';
-import {updateMessageAction, addMessageAction} from './../../redux/dialogPageReduser';
 
 const Dialogs = (props) => {
 
@@ -10,15 +9,13 @@ const Dialogs = (props) => {
   let messagesElements = props.dialogPage.messages.map( (message) => <Message message={message.message}/> );
   let messageTextArea = props.dialogPage.newMessageText;
 
-  let addMessage = () => {
-    let action = addMessageAction();
-    props.dispatch(action);
+  let onAddMessage = () => {
+    props.addMessage();
   };
 
   let onChanchMessage = (event) => {
     let text = event.target.value;
-    let action = updateMessageAction(text);
-    props.dispatch(action);
+    props.chanchMessage(text);
   }
 
 
@@ -37,7 +34,7 @@ const Dialogs = (props) => {
           onChange={ onChanchMessage }></textarea>
         </div>
         <div>
-          <button onClick={ addMessage }>Add Message</button></div>
+          <button onClick={ onAddMessage }>Add Message</button></div>
       </div>
 
 

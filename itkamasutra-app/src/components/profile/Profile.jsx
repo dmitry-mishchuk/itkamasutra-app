@@ -5,7 +5,6 @@ import style from './Profile.module.css';
 
 
 const Profile = (props) => {
-  debugger;
   return (
     <div>
 

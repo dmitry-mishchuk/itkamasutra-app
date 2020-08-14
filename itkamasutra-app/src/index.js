@@ -8,23 +8,19 @@ import {Provider} from 'react-redux';
 
 import store from './redux/reduxStore';
 
-let rerenderEntaireTree = (state) => {
+
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
         <Provider store={store}>
-          <App state={state} store={store} dispatch={store.dispatch.bind(store)}/>
+          <App/>
         </Provider>
       </BrowserRouter>
     </React.StrictMode>, document.getElementById('root'));
-}
 
-rerenderEntaireTree(store.getState());
 
-store.subscribe( ()=> {
-  let state = store.getState();
-  rerenderEntaireTree(state);
-});
+
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -18,7 +18,6 @@ const MyPosts = (props) => {
       let text = newPosrElement.current.value;
       props.updatePostChanche(text);
   }
-  debugger;
   return (
       <div className={style.postsblock}>
           <h3>My Post</h3>
