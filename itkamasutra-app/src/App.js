@@ -8,15 +8,14 @@ import {Route} from 'react-router-dom';
 
 
 const App = (props) => {
+  debugger;
   return (
         <div className='appWraper'>
             <Header/>
             <Navbar/>
             <div className='appContent'>
 
-              <Route path="/profile" render={ () => <Profile
-                profalePage={props.state.profalePage}
-                dispatch={props.dispatch}/> }/>
+              <Route path="/profile" render={ () => <Profile store={props.store}/> }/>
 
               <Route path="/dialogs" render={ () => <Dialogs
                 dialogPage={props.state.dialogPage}

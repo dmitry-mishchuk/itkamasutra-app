@@ -1,15 +1,16 @@
 import React from 'react';
 import ProfileInfo from './profileInfo/ProfileInfo';
-import MyPosts from './myPosts/MyPosts'
+import MyPostsContainer from './myPosts/MyPostsContainer'
 import style from './Profile.module.css';
 
 
 const Profile = (props) => {
+  debugger;
   return (
     <div>
 
       <ProfileInfo/>
-      <MyPosts profalePage={props.profalePage} dispatch={props.dispatch}/>
+      <MyPostsContainer/>
 
     </div>
   );

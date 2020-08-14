@@ -1,7 +1,16 @@
 const ADD_POST = "ADD-POST";
 const UPDATE_POST_CHANGE = "UPDATE-POST-CHANGE";
 
-const profalePageReduser = (state, action) => {
+let initialState = {
+  posts: [
+    {id: '1', message: "Hi, how are you", likeCount: 12},
+    {id: '2', message: "It's, my first post", likeCount: 5}
+  ],
+
+  newPostText: 'kamasutra'
+};
+
+const profalePageReduser = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST:
           let newPost = {

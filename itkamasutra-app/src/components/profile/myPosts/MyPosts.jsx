@@ -4,25 +4,21 @@ import style from './MyPosts.module.css';
 import {addPostAction, updatePostAction} from './../../../redux/profalePageReduser';
 
 const MyPosts = (props) => {
-
-  let postElement = props.profalePage.posts.map( (post) => <Post message={post.message} likeCount={post.likeCount}/> );
+  let postElement = props.profilePage.posts.map( (post) => <Post message={post.message} likeCount={post.likeCount}/> );
   let newPosrElement = React.createRef();
 
 
 
 
-    let addPost = () => {
-    let text = newPosrElement.current.value;
-    let action = addPostAction();
-    props.dispatch(action);
+    let onAddPost = () => {
+    props.addPost();
   }
 
   let onPostChanche = () => {
       let text = newPosrElement.current.value;
-      let action = updatePostAction(text);
-      props.dispatch(action);
+      props.updatePostChanche(text);
   }
-
+  debugger;
   return (
       <div className={style.postsblock}>
           <h3>My Post</h3>
@@ -32,10 +28,10 @@ const MyPosts = (props) => {
                   <textarea
                   onChange={ onPostChanche }
                   ref={ newPosrElement }
-                  value={ props.profalePage.newPostText }></textarea>
+                  value={ props.profilePage.newPostText }></textarea>
               </div>
               <div>
-                  <button onClick={ addPost }>Add post</button>
+                  <button onClick={ onAddPost }>Add post</button>
               </div>
           </div>
           <div>
