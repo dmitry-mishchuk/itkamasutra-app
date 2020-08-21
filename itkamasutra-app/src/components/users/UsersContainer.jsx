@@ -1,11 +1,15 @@
 import React from 'react';
-import Users from './Users';
+import UsersAPIComponent from './UsersAPIComponent';
 import {connect} from 'react-redux';
-import {followAction, unfollowAction, setUsersAction} from './../../redux/usersPageReduser' ;
+import {followAction, unfollowAction, setUsersAction, setCurrentPageAction, setTotalUsersCountAction, togleIsFetchingAction} from './../../redux/usersPageReduser' ;
 
 let mapStateToProps = (state) => {
   return {
-    users: state.usersPage.users
+    users: state.usersPage.users,
+    pageSize: state.usersPage.pageSize,
+    totalUsersCount: state.usersPage.totalUsersCount,
+    currentPage: state.usersPage.currentPage,
+    isFetching: state.usersPage.isFetching,
   };
 };
 
@@ -19,10 +23,19 @@ let mapDispatchToProps = (dispatch) => {
       },
       setUsers: (users) => {
         dispatch(setUsersAction(users));
+      },
+      setCurrentPage: (page) => {
+        dispatch(setCurrentPageAction(page));
+      },
+      setTotalUsersCount: (totalCount) => {
+        dispatch(setTotalUsersCountAction(totalCount));
+      },
+      togleIsFetching: (isFetching) => {
+        dispatch(togleIsFetchingAction(isFetching));
       }
   }
 }
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users);
+const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent);
 
 export default UsersContainer;

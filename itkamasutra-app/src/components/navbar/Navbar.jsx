@@ -14,6 +14,10 @@ const Technologies = () => {
         <NavLink to="/dialogs" activeClassName={style.active}>Dialogs</NavLink>
       </div>
 
+      <div className={`${style.item} ${style.active}`}>
+        <NavLink to="/users" activeClassName={style.active}>Users</NavLink>
+      </div>
+
       <div className={style.item}>
         <a>News</a>
       </div>

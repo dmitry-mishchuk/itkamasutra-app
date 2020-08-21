@@ -1,5 +1,6 @@
 const ADD_POST = "ADD-POST";
 const UPDATE_POST_CHANGE = "UPDATE-POST-CHANGE";
+const SET_USER_PROFILE = "SET_USER_PROFILE";
 
 let initialState = {
   posts: [
@@ -7,7 +8,8 @@ let initialState = {
     {id: '2', message: "It's, my first post", likeCount: 5}
   ],
 
-  newPostText: 'kamasutra'
+  newPostText: 'kamasutra',
+  profile: null
 };
 
 const profalePageReduser = (state = initialState, action) => {
@@ -29,6 +31,9 @@ const profalePageReduser = (state = initialState, action) => {
           stateCopy.newPostText = action.message;
           return stateCopy;
     }
+    case SET_USER_PROFILE: {
+      return {...state, profile: action.profile}
+    }
     default:
           return state;
   }
@@ -39,5 +44,7 @@ export let addPostAction = () => ({ type: ADD_POST });
 export let updatePostAction = (text) => {
   return { type: UPDATE_POST_CHANGE, message: text};
 };
+
+export let setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile});
 
 export default profalePageReduser;
