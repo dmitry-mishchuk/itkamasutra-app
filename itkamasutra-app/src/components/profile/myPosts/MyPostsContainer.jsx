@@ -13,7 +13,6 @@ let mapStateToProps = (state) => {
 
 //создана функция для диспатчей который нужны калбекам компоненты и проброса их в пропсы
 let mapDispatchToProps = (dispatch) => {
-  debugger;
   return {
     addPost: () => { dispatch(addPostAction()); },
     updatePostChanche: (text) => { dispatch(updatePostAction(text)); }
