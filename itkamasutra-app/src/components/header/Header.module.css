@@ -3,5 +3,11 @@
   background-color: rgba(86,182,120,1);
 }
 .header img {
-  width: 65px;
+  width: 75px;
+}
+.loginBlock {
+  float: right;
+}
+.loginBlock a {
+  color: white;
 }
