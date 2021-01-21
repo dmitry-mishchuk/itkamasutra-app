@@ -1,7 +1,13 @@
 import React from 'react';
 import UsersAPIComponent from './UsersAPIComponent';
 import {connect} from 'react-redux';
-import {followAction, unfollowAction, setUsersAction, setCurrentPageAction, setTotalUsersCountAction, togleIsFetchingAction} from './../../redux/usersPageReduser' ;
+import {
+  followAction,
+  unfollowAction,
+  setUsersAction,
+  setCurrentPageAction,
+  setTotalUsersCountAction,
+  togleIsFetchingAction } from './../../redux/usersPageReduser' ;
 
 let mapStateToProps = (state) => {
   return {
