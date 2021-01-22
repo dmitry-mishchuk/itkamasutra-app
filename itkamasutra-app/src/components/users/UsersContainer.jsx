@@ -7,7 +7,8 @@ import {
   setUsersAction,
   setCurrentPageAction,
   setTotalUsersCountAction,
-  togleIsFetchingAction } from './../../redux/usersPageReduser' ;
+  togleIsFetchingAction,
+  togleFollowingProgressAction } from './../../redux/usersPageReduser' ;
 
 let mapStateToProps = (state) => {
   return {
@@ -16,6 +17,7 @@ let mapStateToProps = (state) => {
     totalUsersCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
     isFetching: state.usersPage.isFetching,
+    followingInProgress: state.usersPage.followingInProgress
   };
 };
 
@@ -38,6 +40,9 @@ let mapDispatchToProps = (dispatch) => {
       },
       togleIsFetching: (isFetching) => {
         dispatch(togleIsFetchingAction(isFetching));
+      },
+      togleFollowing: (progres) => {
+        dispatch(togleFollowingProgressAction(progres));
       }
   }
 }
