@@ -1,3 +1,5 @@
+import {usersAPI} from './../api/api';
+
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
@@ -56,19 +58,52 @@ const usersPageReduser = (state = initialState, action) => {
 
 }
 
+// Create Action Creator
 export let followAction = (userId) => ({ type: FOLLOW, userId });
-
 export let unfollowAction = (userId) => ({ type: UNFOLLOW, userId });
-
 export let setUsersAction = (users) => ({ type: SET_USERS, users });
-
 export let setCurrentPageAction = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
-
 export let setTotalUsersCountAction = (totalCount) => ({ type: SET_TOTAL_COUNT, totalCount });
-
 export let togleIsFetchingAction = (isFetching) => ({ type: TOGLE_ISFETCHING, isFetching });
-
 export let togleFollowingProgressAction = (isProgress, userId) => ({ type: FOLLOWING_IN_PROGRESS, isProgress, userId });
+
+// Create ThunkCreator
+export const getUsersThunkCreator = (currentPage, pageSize) =>{
+  return (dispatch) => {
+    dispatch(togleIsFetchingAction(true));
+    usersAPI.getUsers(currentPage, pageSize).then(data => {
+      dispatch(togleIsFetchingAction(false));
+      dispatch(setCurrentPageAction(currentPage));
+      dispatch(setUsersAction(data.items));
+      dispatch(setTotalUsersCountAction(data.totalCount));
+    });
+  }
+}
+export const followThunkCreator = (userId) =>{
+  return (dispatch) => {
+
+    dispatch(togleFollowingProgressAction(true, userId));
+    usersAPI.follow(userId).then(response => {
+        if (response.data.resultCode === 0) {
+            dispatch(followAction(userId))
+        }
+        dispatch(togleFollowingProgressAction(false, userId));
+    });
+  }
+}
+export const unfollowThunkCreator = (userId) =>{
+  return (dispatch) => {
+
+    dispatch(togleFollowingProgressAction(true, userId));
+    usersAPI.unfollow(userId).then(response => {
+        if (response.data.resultCode === 0) {
+            dispatch(unfollowAction(userId));
+        }
+        dispatch(togleFollowingProgressAction(false, userId));
+    });
+
+  }
+}
 
 
 export default usersPageReduser;

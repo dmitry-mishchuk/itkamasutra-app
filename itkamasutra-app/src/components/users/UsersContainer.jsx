@@ -8,7 +8,10 @@ import {
   setCurrentPageAction,
   setTotalUsersCountAction,
   togleIsFetchingAction,
-  togleFollowingProgressAction } from './../../redux/usersPageReduser' ;
+  togleFollowingProgressAction,
+  getUsersThunkCreator,
+  followThunkCreator,
+  unfollowThunkCreator } from './../../redux/usersPageReduser' ;
 
 let mapStateToProps = (state) => {
   return {
@@ -43,6 +46,15 @@ let mapDispatchToProps = (dispatch) => {
       },
       togleFollowing: (progres) => {
         dispatch(togleFollowingProgressAction(progres));
+      },
+      getUsers: (currentPage, pageSize) => {
+        dispatch(getUsersThunkCreator(currentPage, pageSize));
+      },
+      follow: (userId) => {
+        dispatch(followThunkCreator(userId));
+      },
+      unfollow: (userId) => {
+        dispatch(unfollowThunkCreator(userId));
       }
   }
 }

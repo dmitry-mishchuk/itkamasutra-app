@@ -13,21 +13,11 @@ class UsersAPIComponent extends React.Component {
 
 
   componentDidMount() {
-    this.props.togleIsFetching(true);
-    usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-      this.props.togleIsFetching(false);
-      this.props.setUsers(data.items);
-      this.props.setTotalUsersCount(data.totalCount)
-    });
+    this.props.getUsers(this.props.currentPage, this.props.pageSize);
   }
 
   onPageChanged = (pageNumber) => {
-    this.props.togleIsFetching(true);
-    this.props.setCurrentPage(pageNumber);
-    usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
-      this.props.togleIsFetching(false);
-      this.props.setUsers(data.items);
-    });
+    this.props.getUsers(pageNumber, this.props.pageSize);
   }
 
   render() {
@@ -41,7 +31,10 @@ class UsersAPIComponent extends React.Component {
                                                            unfollow={this.props.unfollow}
                                                            follow={this.props.follow}
                                                            togleFollowing={this.props.togleFollowing}
-                                                           followingInProgress={this.props.followingInProgress}/>
+                                                           followingInProgress={this.props.followingInProgress}
+                                                           follow={this.props.follow}
+                                                           unfollow={this.props.unfollow}
+                                                           />
 
             }
           </>
