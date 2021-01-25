@@ -68,7 +68,7 @@ export let togleIsFetchingAction = (isFetching) => ({ type: TOGLE_ISFETCHING, is
 export let togleFollowingProgressAction = (isProgress, userId) => ({ type: FOLLOWING_IN_PROGRESS, isProgress, userId });
 
 // Create ThunkCreator
-export const getUsersThunkCreator = (currentPage, pageSize) =>{
+export const getUsersThunkCreator = (currentPage, pageSize) => {
   return (dispatch) => {
     dispatch(togleIsFetchingAction(true));
     usersAPI.getUsers(currentPage, pageSize).then(data => {

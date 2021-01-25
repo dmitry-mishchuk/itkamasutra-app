@@ -1,3 +1,5 @@
+import { usersAPI } from './../api/api';
+
 const ADD_POST = "ADD-POST";
 const UPDATE_POST_CHANGE = "UPDATE-POST-CHANGE";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
@@ -46,5 +48,14 @@ export let updatePostAction = (text) => {
 };
 
 export let setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile});
+
+// Create ThunkCreator
+export const getUserProfileThunkCreator = (userId) => {
+  return (dispatch) => {
+    usersAPI.getProfile(userId).then(response => {
+      dispatch(setUserProfile(response.data));
+    });
+  }
+}
 
 export default profalePageReduser;
