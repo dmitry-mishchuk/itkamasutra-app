@@ -1,5 +1,6 @@
 import React from 'react';
-import UsersAPIComponent from './UsersAPIComponent';
+import Users from './Users';
+import Preloader from './../common/Preloader';
 import {connect} from 'react-redux';
 import {
   followAction,
@@ -12,6 +13,43 @@ import {
   getUsersThunkCreator,
   followThunkCreator,
   unfollowThunkCreator } from './../../redux/usersPageReduser' ;
+import {compose} from 'redux';
+
+class UsersContainer extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {
+    this.props.getUsers(this.props.currentPage, this.props.pageSize);
+  }
+
+  onPageChanged = (pageNumber) => {
+    this.props.getUsers(pageNumber, this.props.pageSize);
+  }
+
+  render() {
+
+    return <>
+            {this.props.isFetching ? <Preloader/> : <Users totalUsersCount={this.props.totalUsersCount}
+                                                           pageSize={this.props.pageSize}
+                                                           currentPage={this.props.currentPage}
+                                                           onPageChanged={this.onPageChanged}
+                                                           users={this.props.users}
+                                                           unfollow={this.props.unfollow}
+                                                           follow={this.props.follow}
+                                                           togleFollowing={this.props.togleFollowing}
+                                                           followingInProgress={this.props.followingInProgress}
+                                                           follow={this.props.follow}
+                                                           unfollow={this.props.unfollow}
+                                                           />
+
+            }
+          </>
+
+  }
+}
+
+
 
 let mapStateToProps = (state) => {
   return {
@@ -59,6 +97,6 @@ let mapDispatchToProps = (dispatch) => {
   }
 }
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent);
-
-export default UsersContainer;
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps)
+)(UsersContainer);

@@ -19,25 +19,23 @@ const Dialogs = (props) => {
     props.chanchMessage(text);
   }
 
-  if (!props.isAuth) return <Redirect to={"/login"} />;
-
   return(
     <div className={style.dialogs}>
 
-      <div className={style.dialogsItem}>
-          {dialogsElements}
-      </div>
-
-      <div className={style.messages}>
-        {messagesElements}
-        <div>
-          <textarea
-          value={ messageTextArea }
-          onChange={ onChanchMessage }></textarea>
+        <div className={style.dialogsItem}>
+            { dialogsElements }
         </div>
-        <div>
-          <button onClick={ onAddMessage }>Add Message</button></div>
-      </div>
+
+        <div className={style.messages}>
+            { messagesElements }
+            <div>
+              <textarea value={ messageTextArea }
+                        onChange={ onChanchMessage }></textarea>
+            </div>
+            <div>
+              <button onClick={ onAddMessage }>Add Message</button>
+            </div>
+        </div>
 
 
 
