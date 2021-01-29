@@ -15,7 +15,7 @@ let initialState = {
   profile: null
 };
 
-const profalePageReduser = (state = initialState, action) => {
+const profilePageReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST:{
           let newPost = {
@@ -78,4 +78,4 @@ export const updateStatusThunkCreator = (text) => {
   }
 }
 
-export default profalePageReduser;
+export default profilePageReducer;

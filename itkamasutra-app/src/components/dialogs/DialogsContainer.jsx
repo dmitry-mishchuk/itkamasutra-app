@@ -1,6 +1,6 @@
 import React from 'react';
 import Dialogs from './Dialogs';
-import {updateMessageAction, addMessageAction} from './../../redux/dialogPageReduser';
+import {updateMessageAction, addMessageAction} from './../../redux/dialogPageReducer';
 import {connect} from 'react-redux';
 import {withAuthRedirect} from './../hoc/withAuthRedirect';
 import {compose} from 'redux';

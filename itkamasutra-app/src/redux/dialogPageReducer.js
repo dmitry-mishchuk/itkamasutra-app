@@ -21,7 +21,7 @@ let initialState = {
   newMessageText: "Hihi"
 };
 
-const dialogPageReduser = (state = initialState, action) => {
+const dialogPageReducer = (state = initialState, action) => {
 
   if (action.type === ADD_MESSAGE) {
     return {
@@ -43,4 +43,4 @@ export let updateMessageAction = (text) => {
   return { type: UPDATE_MESSAGE, message: text};
 };
 
-export default dialogPageReduser;
+export default dialogPageReducer;

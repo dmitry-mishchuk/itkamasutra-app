@@ -19,7 +19,7 @@ const Technologies = () => {
       </div>
 
       <div className={style.item}>
-        <a>News</a>
+        <NavLink to="/news" activeClassName={style.active}>News</NavLink>
       </div>
 
       <div className={style.item}>

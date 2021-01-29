@@ -1,16 +1,13 @@
 import React from 'react';
 import Post from './post/Post';
 import style from './MyPosts.module.css';
-import {addPostAction, updatePostAction} from './../../../redux/profalePageReduser';
+
 
 const MyPosts = (props) => {
   let postElement = props.profilePage.posts.map( (post) => <Post message={post.message} likeCount={post.likeCount}/> );
   let newPosrElement = React.createRef();
 
-
-
-
-    let onAddPost = () => {
+  let onAddPost = () => {
     props.addPost();
   }
 
@@ -18,6 +15,7 @@ const MyPosts = (props) => {
       let text = newPosrElement.current.value;
       props.updatePostChanche(text);
   }
+
   return (
       <div className={style.postsblock}>
           <h3>My Post</h3>

@@ -12,7 +12,7 @@ import {
   togleFollowingProgressAction,
   getUsersThunkCreator,
   followThunkCreator,
-  unfollowThunkCreator } from './../../redux/usersPageReduser' ;
+  unfollowThunkCreator } from './../../redux/usersPageReducer' ;
 import {compose} from 'redux';
 
 class UsersContainer extends React.Component {

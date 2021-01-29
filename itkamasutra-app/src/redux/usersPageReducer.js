@@ -17,7 +17,7 @@ let initialState = {
   followingInProgress: []
 };
 
-const usersPageReduser = (state = initialState, action) => {
+const usersPageReducer = (state = initialState, action) => {
   if (action.type === FOLLOW) {
     return {
       ...state,
@@ -106,4 +106,4 @@ export const unfollowThunkCreator = (userId) =>{
 }
 
 
-export default usersPageReduser;
+export default usersPageReducer;

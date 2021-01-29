@@ -1,6 +1,6 @@
 import React from 'react';
 import MyPosts from './MyPosts';
-import {addPostAction, updatePostAction} from './../../../redux/profalePageReduser';
+import {addPostAction, updatePostAction} from './../../../redux/profilePageReducer';
 import {connect} from 'react-redux'
 
 //создана функция для получения стейта компоненты и проброса его в пропсы
