@@ -1,15 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {sendNewsAction} from './../../redux/newsPageReducer';
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm } from 'redux-form';
+import {requaredField, maxLength} from './../../utilites/validators/formvalidator';
+import {Textarea} from './../common/FormsControls/FormsControls';
+
+const maxLength10 = maxLength(10);
 
 const NewsForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
           <div>
-            <Field component="textarea"
+            <Field component={Textarea}
                    name="newsText"
-                   placeholder="Your News"/>
+                   placeholder="Your News"
+                   validate={[requaredField, maxLength10]}/>
           </div>
           <div>
             <button>Send My News</button>
@@ -22,7 +27,7 @@ const NewsReduxForm = reduxForm({form: 'news'})(NewsForm);
 
 class NewsContainer extends React.Component {
 
-  onSubmit = (formData) => {
+  onSubmitNews = (formData) => {
     this.props.onSendNews(formData.newsText)
   }
 
@@ -30,7 +35,7 @@ class NewsContainer extends React.Component {
     return (
       <div>
           <div>{this.props.news.map( (element) => <div>{element.text}</div> )}</div>
-          <NewsReduxForm onSubmit={this.onSubmit}/>
+          <NewsReduxForm onSubmit={this.onSubmitNews}/>
       </div>
     );
   }
