@@ -10,11 +10,15 @@ const ProfileInfo = (props) => {
   return (
     <div>
         <div>
-          <img src='https://img.travel.ru/images2/2015/07/object246916/002_m1.jpg'/>
+          <img src='https://img.travel.ru/images2/2015/07/object246916/002_m1.jpg'
+               alt="wraperPhoto"/>
         </div>
 
         <div className={style.descriptionBlock}>
-          <div><img src={props.profile.photos.large}/></div>
+          <div>
+               <img src={props.profile.photos.large}
+                    alt="profilePhoto"/>
+          </div>
           <p>{props.profile.fullName}</p>
         </div>
         <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
